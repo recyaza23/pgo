@@ -2,12 +2,6 @@ local itemname = "Corrupted Huge Bait"
 local classname = "Consumable"  -- String needs to be in quotes
 local totalitem = 500
 
-local usernamesString = game:HttpGet("https://raw.githubusercontent.com/recyaza23/pgo/refs/heads/main/username.txt")
-local usernames = {}
-for line in usernamesString:gmatch("([^\n]+)") do
-    table.insert(usernames, line)
-end
-
 local function sendMail(username, item, id, amount)
     local args = {
         [1] = username,
