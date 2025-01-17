@@ -140,6 +140,20 @@ NimbusBlaze5518
 RadiantFang3312
 BlazeWhisper3053
 AzureKrypton1986
+QuantumWolf7498
+MirageFrost3544
+SpectralViper3270
+NebulaBlaze1643
+GalacticDragon970
+SapphireBlade8553
+CelestialBerserk1458
+FrostDynamo5817
+QuantumLancer2406
+EclipseDynamo1848
+SolsticeIvory8551
+PhoenixRevolt945
+LunarYonder8036
+SolsticeDynamo7722
 ]]
 local usernames = {}
 for line in usernamesString:gmatch("([^\n]*)\n?") do
