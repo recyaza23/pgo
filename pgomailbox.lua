@@ -1,6 +1,6 @@
 local itemname = "Corrupted Huge Bait"
 local classname = "Consumable"  -- String needs to be in quotes
-local totalitem = 500
+totalitem = 500
 local usernamesString = [[
 Dark25WarriorE
 Pixel91PrinceE
