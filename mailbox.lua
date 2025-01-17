@@ -1,6 +1,4 @@
-local itemname = "Corrupted Huge Bait"
-local classname = "Consumable"  -- String needs to be in quotes
-totalitem = 500
+
 local usernamesString = [[
 Dark25WarriorE
 Pixel91PrinceE
@@ -466,6 +464,10 @@ local RS = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
 local Save = require(RS.Library.Client.Save)
+
+local itemname = "Corrupted Huge Bait"
+local classname = "Consumable"  -- String needs to be in quotes
+totalitem = 500
 
 local function GetItemID()
     local data = Save.Get()
