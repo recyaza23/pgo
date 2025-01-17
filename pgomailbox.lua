@@ -1,32 +1,24 @@
-local HttpService = game:GetService("HttpService")
-local RS = game:GetService("ReplicatedStorage")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
-local Save = require(RS.Library.Client.Save)
+local Save = require(game:GetService("ReplicatedStorage").Library.Client.Save)
 
 local itemname = "Corrupted Huge Bait"
-local classname = "Consumable" -- String needs to be in quotes
-local usernamesStringURL = "https://raw.githubusercontent.com/recyaza23/pgo/refs/heads/main/username.txt" -- Replace with your actual URL
+local classname = "Consumable"
 local totalitem = 500
--- Fetch usernamesString from URL
-local usernamesString
-local success, response = pcall(function()
-    return HttpService:GetAsync(usernamesStringURL)
-end)
+-- Fetch usernames from the server
+local fetchUsernamesFunction = ReplicatedStorage:WaitForChild("FetchUsernames")
+local usernamesString = fetchUsernamesFunction:InvokeServer()
 
-if success then
-    usernamesString = response
-else
-    warn("Failed to fetch usernamesString: " .. tostring(response))
-    usernamesString = "" -- Fallback to an empty string if the fetch fails
-end
-
--- Parse usernames from the fetched string
 local usernames = {}
-for line in usernamesString:gmatch("([^\n]*)\n?") do
-    if line ~= "" then -- Exclude empty lines
-        table.insert(usernames, line)
+if usernamesString then
+    for line in usernamesString:gmatch("([^\n]*)\n?") do
+        if line ~= "" then
+            table.insert(usernames, line)
+        end
     end
+else
+    warn("Failed to fetch usernames. Proceeding with an empty list.")
 end
 
 -- Function to send mail
@@ -46,7 +38,7 @@ end
 local function GetItemID()
     local data = Save.Get()
     local inventory = data and data.Inventory
-    if inventory and inventory[classname] then -- Use classname variable
+    if inventory and inventory[classname] then
         for uid, itemData in pairs(inventory[classname]) do
             if itemData.id == itemname then
                 return uid
