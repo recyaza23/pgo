@@ -1,4 +1,11 @@
 local usernamesString = [[
+PrimalXara1762
+OnyxPyro1162
+RadiantFrost2386
+QuantumFang9098
+NimbusPulse7724
+PrimalJinx4980
+RuneNebula2456
 SolarIvory232
 AzureGriffin1439
 RuneKnight3272
