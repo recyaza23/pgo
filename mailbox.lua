@@ -1,44 +1,5 @@
 local usernamesString = [[
-RuneNight7032
-PulseValor6621
-CobaltVoid8742
-NovaEclipse1783
-MagnetValor493
-CelestialLancer1253
-QuantumMaverick9292
-SolsticeBlitz4730
-ZenMercury2251
-NimbusCobra508
-EclipseHunter521
-TempestFang4513
-TempestXara1885
-ElectricTalon7611
-FluxDynamo7909
-FluxDusk3468
-LyricBolt2099
-OnyxGuardian4967
-RuneBlitz1869
-AstroWolf5160
-AzurePheonix1554
-NovaXara2874
-OrionIon2714
-NebulaAstra8814
-CelestialLancer2586
-AuroraSpectra3186
-CypherPyro4838
-NovaCipher9643
-OnyxFable2350
-RuneIon2822
-ValorNebula6320
-OrionHorizon2129
-AuroraPyro87
-AzureDynamo6061
-HarmonyDrift1249
-PulseRift7617
-BlazeIgnite7039
-NovaValor7335
-CobaltMyst921
-ElectricKnight707
+
 ]]
 local usernames = {}
 for line in usernamesString:gmatch("([^\n]*)\n?") do
