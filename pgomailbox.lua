@@ -1,6 +1,6 @@
-local itemname = "Corrupted Huge Bait"
-local classname = "Consumable"  -- String needs to be in quotes
-local totalitem = 500
+local itemname = "Diamonds"
+local classname = "Currency"  -- String needs to be in quotes
+local totalitem = 287000
  
 local usernamesString = game:HttpGet("https://raw.githubusercontent.com/recyaza23/pgo/refs/heads/main/username.txt")
 
